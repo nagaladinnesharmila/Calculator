@@ -15,6 +15,7 @@ function setOperation(operation) {
     firstOperand = parseFloat(displayValue);
     currentOperation = operation;
     displayValue = '';
+    updateOperationDisplay();
 }
 
 function calculate() {
@@ -46,6 +47,7 @@ function calculate() {
     firstOperand = null;
     secondOperand = null;
     updateDisplay();
+    updateOperationDisplay();
 }
 
 function clearDisplay() {
@@ -54,8 +56,18 @@ function clearDisplay() {
     firstOperand = null;
     secondOperand = null;
     updateDisplay();
+    updateOperationDisplay();
 }
 
 function updateDisplay() {
     document.getElementById('display').value = displayValue;
+}
+
+function updateOperationDisplay() {
+    let operationDisplay = document.getElementById('operationDisplay');
+    if (currentOperation !== null) {
+        operationDisplay.textContent = `${firstOperand} ${currentOperation}`;
+    } else {
+        operationDisplay.textContent = '';
+    }
 }
